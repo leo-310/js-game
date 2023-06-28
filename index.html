@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>JS Game</title>
-</head>
-<body><div class="canvas">
-    <div class="healthBars">
-        <div class="p1"></div>
-        <div class="timer"></div>
-        <div class="p2"></div>
+  </head>
+  <body>
+    <div class="fullPage">
+      <div class="canvas">
+        <div class="healthBars">
+            <div class="p1-healthBar">
+                <div class="p1-health"></div>
+              <div class="p1-healthContainer"></div>
+            </div>
+
+          <div class="timer"></div>
+
+          <div class="p2-healthBar">
+              <div class="p2-health"></div>
+            <div class="p2-healthContainer"></div>
+          </div>
+        </div>
+        <canvas class="gameCanvas"></canvas>
+      </div>
     </div>
-    <canvas></canvas>
-</div>
-</body>
-<script src="index.js"></script>
+  </body>
+  <script src="index.js"></script>
 </html>

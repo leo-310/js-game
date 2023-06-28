@@ -27,6 +27,7 @@ class sprite {
             height : 50
         }
         this.isAttacking;
+        this.health = 100;
     }
     
     draw() {
@@ -66,8 +67,8 @@ class sprite {
 
 const player1 = new sprite ({
     position : {
-        x : 0,
-        y : 0
+        x : 250,
+        y : 100
     },
     velocity : {
         x : 0,
@@ -83,8 +84,8 @@ const player1 = new sprite ({
 
 const player2 = new sprite ({
     position : {
-        x : 500,
-        y : 200
+        x : 750,
+        y : 100
     },
     velocity : {
         x : 0,
@@ -152,11 +153,15 @@ function animate () {
     if (collision(player1, player2) && player1.isAttacking){
             console.log("P1 attacks");
             player1.isAttacking = false;
+            player2.health -= 10;
+            document.querySelector('.p2-health').style.width = player2.health + '%';
         }
 
     if (collision(player2, player1) && player2.isAttacking){
             console.log("P2 attacks");
             player2.isAttacking = false;
+            player1.health -= 10;
+            document.querySelector('.p1-health').style.width = player1.health + '%';
         }
 }
 

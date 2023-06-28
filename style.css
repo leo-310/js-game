@@ -1,23 +1,62 @@
-.canvas{
+* {
+  box-sizing: border-box;
+}
+.fullPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.canvas {
+  position: relative;
+  display: inline-block;
+}
+.healthBars {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+}
+.p1-healthBar {
+    display: flex;
     position: relative;
-}
-.healthBars{
-position: absolute;
-display: flex;
-width: 100%;
-}
-.p1{
-background-color: yellow;
-height: 30px;
-width: 100px;
-}
-.timer{
-background-color: red;
-height: 100px;
-width: 100px;
-}
-.p2{
+    justify-content: flex-end;
+    height: 30px;
+    width: 100%;
+  }
+  .p1-health {
+    position: absolute;
+    background-color: blue;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  .p1-healthContainer {
     background-color: yellow;
     height: 30px;
-    width: 100px;
+    width: 100%;
+  }
+.timer {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+  flex-shrink: 0;
+}
+.p2-healthBar {
+  position: relative;
+  height: 30px;
+  width: 100%;
+}
+.p2-health {
+  position: absolute;
+  background-color: blue;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.p2-healthContainer {
+  background-color: yellow;
+  height: 30px;
 }
