@@ -1,0 +1,23 @@
+.canvas{
+    position: relative;
+}
+.healthBars{
+position: absolute;
+display: flex;
+width: 100%;
+}
+.p1{
+background-color: yellow;
+height: 30px;
+width: 100px;
+}
+.timer{
+background-color: red;
+height: 100px;
+width: 100px;
+}
+.p2{
+    background-color: yellow;
+    height: 30px;
+    width: 100px;
+}
