@@ -3,6 +3,7 @@
 }
 .fullPage {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -38,10 +39,13 @@
     width: 100%;
   }
 .timer {
+    display: flex;
   background-color: red;
   height: 100px;
   width: 100px;
   flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
 }
 .p2-healthBar {
   position: relative;
@@ -59,4 +63,26 @@
 .p2-healthContainer {
   background-color: yellow;
   height: 30px;
+}
+
+.result{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    color: white;
+    height: 100%;
+    width: 100%;
+
+}
+.instructions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.name{
+  color: rgba(75, 45, 45, 0.981);
+  font-size: 50px;
+  margin: auto;
 }
