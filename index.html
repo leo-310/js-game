@@ -4,34 +4,105 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sigmar&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sigmar&display=swap"
+      rel="stylesheet"
+    />
     <title>JS Game</title>
   </head>
   <body>
     <div class="fullPage">
+      <div class="instructions">
+        <div class="controls"> 
+          <h1>Player 1 Controls</h1>
+          <p>a : left <br> d : right <br> w : jump <br> f : attack</p>
+          <p class="rules">Rule 1 : Finish your opponent to win before time runs out.</p>
+
+        </div>
       <div class="canvas">
         <div class="healthBars">
-            <div class="p1-healthBar">
-                <div class="p1-health"></div>
-              <div class="p1-healthContainer"></div>
-            </div>
+          <div class="p1-healthBar">
+            <div class="p1-health"></div>
+            <div class="p1-healthContainer"></div>
+          </div>
 
-          <div class="timer"> 10 </div>
+          <div class="timer">10</div>
 
           <div class="p2-healthBar">
-              <div class="p2-health"></div>
+            <div class="p2-health"></div>
             <div class="p2-healthContainer"></div>
           </div>
         </div>
         <div class="result"></div>
         <canvas class="gameCanvas"></canvas>
       </div>
-      <div class="instructions"> <p class="name"> Golem Rumble</p></div>
+      <div class="controls">
+        <h1>Player 2 Controls</h1>
+        <p>Left-arrow : left <br> Right-arrow : right <br> Up-arrow : jump <br> "/" : attack</p>
+        <p class="rules">Rule 2 : If time runs out, player with more energy wins.</p>
+      </div>
+    </div>
+        <p class="name">Golem Rumble</p>
+      <button class="restart" role="button">Restart Game</button>
     </div>
   </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+    integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
   <script src="classes.js"></script>
   <script src="index.js"></script>
 </html>
+
+<!-- HTML !
+<button class="button-30" role="button">Button 30</button>
+
+/* CSS */
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+} -->

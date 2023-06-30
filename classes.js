@@ -118,6 +118,8 @@ class fighter extends Sprite{
         if ( this.position.x + this.width + this.velocity.x <= 0  ){
             this.velocity.x = 0;
         }
+        if (time === 60)
+        this.switchSprite('idle');
         // else
         // this.velocity.y += gravity;
     }
@@ -189,6 +191,7 @@ class fighter extends Sprite{
     }
     attack() {
         this.switchSprite('attack');
+        if (time > 0)
         this.isAttacking = true;
         setTimeout(() => {
             this.isAttacking = false
@@ -197,7 +200,7 @@ class fighter extends Sprite{
 
     takeHit() {
         this.health -= 5;
-
+      
         if(this.health <= 0)
         {
             console.log('lmao ded! XD');
@@ -206,5 +209,6 @@ class fighter extends Sprite{
         else{
             this.switchSprite('hurt');
         }
+      
     }
 }

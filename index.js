@@ -203,7 +203,7 @@ function declareWinner(player1, player2) {
   else document.querySelector(".result").innerHTML = "Tie!";
 }
 
-let time = 60;
+var time = 60;
 function timer() {
   if (time > 0) {
     setTimeout(timer, 1000);
@@ -368,7 +368,7 @@ window.addEventListener("keydown", (event) => {
         if(player2.characterBox.position.y > 0)
       player2.velocity.y = -20;
       break;
-    case "0":
+    case "/":
       player2.attack();
       break;
   }
@@ -401,3 +401,28 @@ window.addEventListener("keyup", (event) => {
   }
   
 });
+
+const restartButton = document.querySelector('.restart');
+restartButton.addEventListener('click', () => {
+  location.reload();
+
+  // time = 60;
+  //   console.log('Restarted!');
+  //   player1.position ={
+  //     x: 250,
+  //     y: 100,
+  //   }
+  //   player2.position = {
+  //     x: 750,
+  //     y: 100,
+  //   }
+  //   document.querySelector(".p1-health").style.width = 100 + "%";
+  //   document.querySelector(".p2-health").style.width = 100 + "%";
+  //   this.health=100;
+  //   this.switchSprite('idle');
+  //   this.dead = false;
+  //   if ( document.querySelector(".result").style.display = "flex"){
+  //   document.querySelector(".result").style.display = "none";
+  //   console.log('flex');
+
+})
