@@ -61,15 +61,35 @@ const player1 = new fighter({
     attack: {
       imageSrc: "/Images/Player1/Player1-attack.png",
       maxFrames: 6
+    },
+    hurt: {
+      imageSrc: "/Images/Player1/Player1-hurt.png",
+      maxFrames: 4
+    },
+    death: {
+      imageSrc: "/Images/Player1/Player1-death.png",
+      maxFrames: 15
     }
   },
   attackBox : {
     offset: {
-        x : -110,
+        x : -105,
         y : 0
     },
     width : 80,
     height : 75
+  },
+  characterBox : {
+    position: {
+      x: 0,
+      y: 0
+    },
+    offset: {
+        x: -80,
+        y: 25   
+    },
+    width: 80,
+    height: 80
   }
 });
 
@@ -110,15 +130,35 @@ const player2 = new fighter({
     attack: {
       imageSrc: "/Images/Player2/Player2-attack.png",
       maxFrames: 6
+    },
+    hurt: {
+      imageSrc: "/Images/Player2/Player2-hurt.png",
+      maxFrames: 4
+    },
+    death: {
+      imageSrc: "/Images/Player2/Player2-death.png",
+      maxFrames: 15
     }
   },
   attackBox : {
     offset: {
-        x : 65,
+        x : 75,
         y : 0
     },
     width : 80,
     height : 75
+  },
+  characterBox : {
+    position: {
+      x: 0,
+      y: 0
+    },
+    offset: {
+        x: 40,
+        y: 25
+    },
+    width: 80,
+    height: 80
   }
 });
 
@@ -179,6 +219,7 @@ function timer() {
 timer();
 
 function animate() {
+
   window.requestAnimationFrame(animate);
   c.fillStyle = "black";
   c.fillRect(0, 0, canvas.width, canvas.height);
@@ -192,10 +233,12 @@ function animate() {
   player2.velocity.x = 0;
 
   if (keys.d.pressed && player1.lastKey === "d") {
-    player1.velocity.x = 5;
-    player1.switchSprite("walk");
-  } 
-  else if (keys.a.pressed && player1.lastKey === "a") {
+      if(player1.characterBox.position.x + player1.characterBox.width < canvas.width)
+      player1.velocity.x = 5;
+      player1.switchSprite("walk");
+    } 
+    else if (keys.a.pressed && player1.lastKey === "a") {
+      if(player1.characterBox.position.x > 0)
     player1.velocity.x = -5;
     player1.switchSprite("walk");
   } 
@@ -211,10 +254,12 @@ function animate() {
   }
 
   if (keys.ArrowRight.pressed && player2.lastKey === "ArrowRight"){
+    if(player2.characterBox.position.x + player2.characterBox.width < canvas.width)
     player2.velocity.x = 5;
     player2.switchSprite("walk");
   }
   else if (keys.ArrowLeft.pressed && player2.lastKey === "ArrowLeft"){
+    if(player2.characterBox.position.x > 0)
     player2.velocity.x = -5;
     player2.switchSprite("walk");
   }
@@ -230,19 +275,38 @@ function animate() {
   }
 
 
-  //Detecting collision
-  if (collision(player1, player2) && player1.isAttacking) {
+  //Detecting collision of player1
+  if (collision(player1, player2) && player1.isAttacking &&player1.currentFrame === 1) {
     console.log("P1 attacks");
+    player2.takeHit();
+    // player2.switchSprite('hurt');
+    // player2.health -= 5;
     player1.isAttacking = false;
-    player2.health -= 10;
-    document.querySelector(".p2-health").style.width = player2.health + "%";
+    // document.querySelector(".p2-health").style.width = player2.health + "%";
+    if(time > 0){
+    gsap.to('.p2-health', {
+        width: player2.health + '%'
+    }) }
+  }
+//When player1 misses
+  if (player1.isAttacking && player1.currentFrame === 1) {
+    player1.isAttacking = false
   }
 
-  if (collision(player2, player1) && player2.isAttacking) {
+//Detecting collision of player2
+  if (collision(player2, player1) && player2.isAttacking && player2.currentFrame === 1) {
     console.log("P2 attacks");
+    player1.takeHit();
     player2.isAttacking = false;
-    player1.health -= 10;
-    document.querySelector(".p1-health").style.width = player1.health + "%";
+    // document.querySelector(".p1-health").style.width = player1.health + "%";
+    if(time > 0){
+    gsap.to('.p1-health', {
+        width: player1.health + '%'
+    }) }
+  }
+  //When player2 misses
+  if (player2.isAttacking && player2.currentFrame === 1) {
+    player2.isAttacking = false
   }
 
   //When health is zero before time
@@ -250,11 +314,26 @@ function animate() {
     declareWinner(player1, player2);
     time = 0;
   }
+
+//   Upper boundary
+  if(player1.characterBox.position.y <= 0){
+    player1.velocity.y = 0;
+    player1.velocity.y = gravity;
+    }
+
+  if(player2.characterBox.position.y <= 0){
+    player2.velocity.y = 0;
+    player2.velocity.y = gravity;
+    }
+    
 }
 
 animate();
 
 window.addEventListener("keydown", (event) => {
+
+
+    if (!player1.dead){
   switch (event.key) {
     case "d":
       keys.d.pressed = true;
@@ -265,13 +344,18 @@ window.addEventListener("keydown", (event) => {
       player1.lastKey = "a";
       break;
     case "w":
+        if(player1.characterBox.position.y > 0)
       player1.velocity.y = -20;
     //   player1.switchSprite("jump");
       break;
     case "f":
       player1.attack();
+      
       break;
-
+  }
+}
+    if (!player2.dead){
+  switch (event.key) {
     case "ArrowRight":
       keys.ArrowRight.pressed = true;
       player2.lastKey = "ArrowRight";
@@ -281,12 +365,15 @@ window.addEventListener("keydown", (event) => {
       player2.lastKey = "ArrowLeft";
       break;
     case "ArrowUp":
+        if(player2.characterBox.position.y > 0)
       player2.velocity.y = -20;
       break;
     case "0":
       player2.attack();
       break;
   }
+}
+    
   console.log(event.key);
 });
 
@@ -312,4 +399,5 @@ window.addEventListener("keyup", (event) => {
       keys.ArrowUp.pressed = false;
       break;
   }
+  
 });
