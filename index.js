@@ -36,7 +36,6 @@ const player1 = new fighter({
   color: "green",
   imageSrc: "/Images/Player1/Player1-Idle.png",
   scale: 0.25,
-//   maxFrames: 12,
   offset: {
     x: 140,
     y: 0,
@@ -275,19 +274,15 @@ function animate() {
   }
 
 
-  //Detecting collision of player1
   if (collision(player1, player2) && player1.isAttacking &&player1.currentFrame === 1) {
-    console.log("P1 attacks");
     player2.takeHit();
-    // player2.switchSprite('hurt');
-    // player2.health -= 5;
     player1.isAttacking = false;
-    // document.querySelector(".p2-health").style.width = player2.health + "%";
     if(time > 0){
     gsap.to('.p2-health', {
         width: player2.health + '%'
     }) }
   }
+  
 //When player1 misses
   if (player1.isAttacking && player1.currentFrame === 1) {
     player1.isAttacking = false
@@ -295,10 +290,9 @@ function animate() {
 
 //Detecting collision of player2
   if (collision(player2, player1) && player2.isAttacking && player2.currentFrame === 1) {
-    console.log("P2 attacks");
     player1.takeHit();
     player2.isAttacking = false;
-    // document.querySelector(".p1-health").style.width = player1.health + "%";
+
     if(time > 0){
     gsap.to('.p1-health', {
         width: player1.health + '%'
@@ -346,7 +340,6 @@ window.addEventListener("keydown", (event) => {
     case "w":
         if(player1.characterBox.position.y > 0)
       player1.velocity.y = -20;
-    //   player1.switchSprite("jump");
       break;
     case "f":
       player1.attack();
@@ -374,7 +367,6 @@ window.addEventListener("keydown", (event) => {
   }
 }
     
-  console.log(event.key);
 });
 
 window.addEventListener("keyup", (event) => {
@@ -405,24 +397,4 @@ window.addEventListener("keyup", (event) => {
 const restartButton = document.querySelector('.restart');
 restartButton.addEventListener('click', () => {
   location.reload();
-
-  // time = 60;
-  //   console.log('Restarted!');
-  //   player1.position ={
-  //     x: 250,
-  //     y: 100,
-  //   }
-  //   player2.position = {
-  //     x: 750,
-  //     y: 100,
-  //   }
-  //   document.querySelector(".p1-health").style.width = 100 + "%";
-  //   document.querySelector(".p2-health").style.width = 100 + "%";
-  //   this.health=100;
-  //   this.switchSprite('idle');
-  //   this.dead = false;
-  //   if ( document.querySelector(".result").style.display = "flex"){
-  //   document.querySelector(".result").style.display = "none";
-  //   console.log('flex');
-
 })

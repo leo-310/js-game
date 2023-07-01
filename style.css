@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  /* background-image: url("Images/grass-texture.svg"); */
+
 
 }
 .instructions{
@@ -45,6 +45,10 @@ background-color: transparent;
   margin-top: 50px;
   text-align: center;
 }
+.textShadow{
+  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.2), -3px 0px 7px rgba(0, 0, 0, 0.2), 0px 4px 7px rgba(0, 0, 0, 0.2);
+
+}
 .canvas {
   position: relative;
   display: inline-block;
@@ -63,7 +67,6 @@ background-color: transparent;
     display: flex;
     position: relative;
     justify-content: flex-end;
-    /* height: 30px; */
     width: 100%;
     border-top: 4px solid white;
     border-left: 4px solid white;
@@ -100,7 +103,6 @@ background-color: transparent;
 }
 .p2-healthBar {
   position: relative;
-  /* height: 30px; */
   width: 100%;
   border-top: 4px solid white;
     border-right: 4px solid white;
@@ -154,7 +156,6 @@ background-color: transparent;
   color: #36395A;
   cursor: pointer;
   display: inline-flex;
-  /* font-family: "JetBrains Mono",monospace; */
   height: 40px;
   justify-content: center;
   line-height: 1;

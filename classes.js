@@ -85,7 +85,6 @@ class fighter extends Sprite{
             sprites[sprite].image = new Image()
             sprites[sprite].image.src = sprites[sprite].imageSrc;
           }
-          console.log(this.sprites)
     }
 
     
@@ -99,7 +98,6 @@ class fighter extends Sprite{
         c.fillStyle = 'transparent';
         c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height);
 
-        // c.fillStyle = 'black';
         c.fillRect(this.characterBox.position.x, this.characterBox.position.y, this.characterBox.width, this.characterBox.height);
 
 
@@ -120,8 +118,6 @@ class fighter extends Sprite{
         }
         if (time === 60)
         this.switchSprite('idle');
-        // else
-        // this.velocity.y += gravity;
     }
 
     switchSprite(sprite) {
@@ -203,7 +199,6 @@ class fighter extends Sprite{
       
         if(this.health <= 0)
         {
-            console.log('lmao ded! XD');
             this.switchSprite('death');
         }
         else{
